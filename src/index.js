@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< Updated upstream
 import {
   BrowserRouter,
   Routes,
@@ -21,6 +22,17 @@ root.render(
       {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   </BrowserRouter>
+=======
+import {Provider} from "react-redux";
+import store from "./store";
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>
+
+>>>>>>> Stashed changes
 );
 
 reportWebVitals();
