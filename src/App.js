@@ -1,13 +1,5 @@
 import './App.css';
-<<<<<<< Updated upstream
 
-function App() {
-  
-  return (
-    <div>
-      
-    </div>
-=======
 import LogIn from "./pages/registration/LogIn";
 import SignUp from "./pages/registration/SignUp";
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
@@ -22,7 +14,6 @@ function App() {
               <Route path={'/signup'} element={<SignUp/>}/>
           </Routes>
       </Router>
->>>>>>> Stashed changes
   );
 }
 
