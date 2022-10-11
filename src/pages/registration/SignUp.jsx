@@ -60,7 +60,7 @@ function SignUp(props) {
 
   return (
     <div className="bg-blue-400 p-10 pt-[4.5rem] h-[100vh] sm:px-40 md:px-[16rem] lg:px-[23rem] lg:pt-[4rem] xl:px-[30rem] xl:pt-[5.5rem]">
-      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl">
+      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl" onSubmit={Register}>
         <p htmlFor="" className="block text-center text-3xl font-semibold">
           Sign Up
         </p>
@@ -113,9 +113,7 @@ function SignUp(props) {
         )}
         <button
           className="mt-8 py-1 w-full text-center text-white bg-blue-500 rounded-[4px]"
-          onClick={() => {
-            Register();
-          }}
+          type="submit"
         >
           Sign Up
         </button>

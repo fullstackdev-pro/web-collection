@@ -34,7 +34,7 @@ function LogIn(props) {
 
   return (
     <div className="bg-blue-400 p-10 pt-24 h-[100vh] sm:px-40 md:px-[16rem] lg:px-[23rem] lg:pt-[5rem] xl:px-[30rem] xl:pt-[7rem]">
-      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl">
+      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl" onSubmit={Login}>
         <p htmlFor="" className="block text-center text-3xl font-semibold">
           Log In
         </p>
@@ -58,7 +58,7 @@ function LogIn(props) {
           onChange={handleChangePassword}
         />
         <button
-          onClick={() => {Login()}}
+          type="submit"
           className="mt-8 py-1 w-full text-center text-white bg-blue-500 rounded-[4px]"
         >
           Log In

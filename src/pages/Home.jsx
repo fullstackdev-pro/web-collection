@@ -10,9 +10,6 @@ function Home(props) {
     return (
         <div>
             <Navbar/>
-
-
-
             <Routes>
                 <Route index element={<Items/>}/>
                 <Route path={'/users'} element={<Users/>}/>
