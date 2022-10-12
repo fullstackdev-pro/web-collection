@@ -32,6 +32,7 @@ function SignUp(props) {
   //server
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleChangeUserName = (event) => {
     setUsername(event.target.value);
@@ -41,26 +42,37 @@ function SignUp(props) {
     setEmail(event.target.value);
   };
 
-  async function Register() {
-    if (userName && email && password && password === cPassword) {
-      await axios
-        .post("http://localhost:5000/api/register", {
-          username: userName,
-          email: email,
-          password: password,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      if (userName && email && password && password === cPassword) {
+        await axios
+          .post("http://localhost:5000/api/register", {
+            username: userName,
+            email: email,
+            password: password,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    } catch (e) {
+      setError(e.message);
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="bg-blue-400 p-10 pt-[4.5rem] h-[100vh] sm:px-40 md:px-[16rem] lg:px-[23rem] lg:pt-[4rem] xl:px-[30rem] xl:pt-[5.5rem]">
-      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl" onSubmit={Register}>
+      <form
+        className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl"
+        onSubmit={handleSubmit}
+      >
         <p htmlFor="" className="block text-center text-3xl font-semibold">
           Sign Up
         </p>

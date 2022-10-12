@@ -7,6 +7,7 @@ import axios from "axios";
 function LogIn(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleChangePassword = (event) => {
     setPassword(event.target.value);
@@ -16,25 +17,36 @@ function LogIn(props) {
     setEmail(event.target.value);
   };
 
-  async function Login() {
-    if (email && password) {
-      await axios
-        .post("http://localhost:5000/api/login", {
-          email: email,
-          password: password,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      if (email && password) {
+        await axios
+          .post("http://localhost:5000/api/login", {
+            email: email,
+            password: password,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    } catch (e) {
+      setError(e.message);
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="bg-blue-400 p-10 pt-24 h-[100vh] sm:px-40 md:px-[16rem] lg:px-[23rem] lg:pt-[5rem] xl:px-[30rem] xl:pt-[7rem]">
-      <form className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl" onSubmit={Login}>
+      <form
+        className="p-8 pb-0 border-[1px] border-b-0 bg-white rounded-t-xl"
+        onSubmit={handleSubmit}
+      >
         <p htmlFor="" className="block text-center text-3xl font-semibold">
           Log In
         </p>
