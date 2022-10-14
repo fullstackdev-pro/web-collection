@@ -12,8 +12,8 @@ export const slice = createSlice({
   },
   reducers: {
     get: (state, action) => {
-      state.items = action.payload.object.items;
-      state.itemsTotal = action.payload.object.total;
+      state.items = action.payload.items;
+      state.itemsTotal = action.payload.total;
     },
     delete: (state, action) => {
       toast.success("Item Deleted");
@@ -40,8 +40,8 @@ export const slice = createSlice({
         state.itemToggle = false;
         state.current = !state.current;
       }
-      if (action.payload.keyPattern?.email) {
-        toast.warning("Email already is exist");
+      if (action.payload.keyPattern?.title) {
+        toast.warning("Title already is exist");
         state.itemToggle = false;
         state.current = !state.current;
       } else if (action.payload.updated) {
@@ -87,7 +87,7 @@ export const saveitems = (data) =>
 
 export const updateitems = (data) =>
   apiCall({
-    url: "/item/" + data.id,
+    url: "/update/item",
     method: "put",
     data,
     onSuccess: slice.actions.update.type,
